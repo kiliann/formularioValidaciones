@@ -62,14 +62,18 @@ window.onload = iniciar;
 
     //Validar Telefono
         let telefono = document.getElementById('iTelefono').value;
-        let expresionReg_Tlf = /^([0-9]{5})+(-){0,1}([0-9]{6})$/i;
+        let expresionReg_Tlf = /^[+-]?[0-9]+$/;
         if (expresionReg_Tlf.test(telefono)){
             console.log('Es correcto');
             return false;
-        }else{
+        }else {
             console.log('Telefono incorrecto')
             return false;
         }
+    //Detectar cuando seleciona Extremadura para sacar un deplegable que ponga
+    // Caceres, Badajoz.
+
+
 
 
 
