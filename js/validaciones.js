@@ -7,10 +7,12 @@
 'use strict'
 
 window.onload = iniciar;
+//window.onload = desplegable;
 
     function iniciar(){
         let formulario = document.forms[0];
         formulario.onsubmit = validar;
+        formulario.onclick = desplegable;
     }
 
     function validar(evento){
@@ -65,16 +67,53 @@ window.onload = iniciar;
         let expresionReg_Tlf = /^[+-]?[0-9]+$/;
         if (expresionReg_Tlf.test(telefono)){
             console.log('Es correcto');
-            return false;
+
         }else {
             console.log('Telefono incorrecto')
             return false;
         }
-    //Detectar cuando seleciona Extremadura para sacar un deplegable que ponga
-    // Caceres, Badajoz.
 
 
 
 
 
+
+
+
+
+    }
+
+    function desplegable(evento){
+        //Detectar cuando seleciona Extremadura para sacar un deplegable que ponga
+        // Caceres, Badajoz.
+        //Evento change sacado de https://es.stackoverflow.com/questions/72141/obtener-el-valor-del-select-seleccionado-javascript-dom/72146
+        var select = document.getElementById('sComunidad');
+        select.addEventListener('change',
+            function(){
+                var selectedOption = this.options[select.selectedIndex];
+                console.log(selectedOption.value + ': ' + selectedOption.text);
+
+
+                //https://www.discoduroderoer.es/como-crear-un-select-html-en-javascript/
+                //Una vez detectado el evento cramos los menus
+                if (selectedOption.value == 11){
+                    let div1 = document.getElementsByClassName('sunOption')[0];
+                    let select2 = document.createElement('select');
+                    select2.classList.add('col-75');
+                    let option1 = document.createElement('Option');
+                    div1.appendChild(select2);
+                    option1.setAttribute('value', 'Caceres');
+                    let option1Texto = document.createTextNode("Caceres")
+                    option1.appendChild(option1Texto);
+                    let option2 = document.createElement('Option');
+                    option2.setAttribute('value', 'Badajoz');
+                    let option2Texto = document.createTextNode('Badajoz');
+                    option2.appendChild(option2Texto)
+                    select2.appendChild(option1);
+                    select2.appendChild(option2)
+
+
+                }
+
+            });
     }
