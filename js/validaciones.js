@@ -8,11 +8,21 @@
 
 window.onload = iniciar;
 //window.onload = desplegable;
+document.getElementById('sComunidad').onchange = function (){
+
+    if (document.getElementById('sComunidad').value == 11){
+        desplegable();
+    }else if(document.querySelectorAll('select')[1]&&document.getElementById('sComunidad').value != 11){
+        document.querySelectorAll('select')[1].remove();
+        console.log('estoy aqui');
+    }
+
+}
 
     function iniciar(){
         let formulario = document.forms[0];
         formulario.onsubmit = validar;
-        formulario.onclick = desplegable;
+        //formulario.onclick = desplegable;
     }
 
     function validar(evento){
@@ -88,15 +98,15 @@ window.onload = iniciar;
         // Caceres, Badajoz.
         //Evento change sacado de https://es.stackoverflow.com/questions/72141/obtener-el-valor-del-select-seleccionado-javascript-dom/72146
         var select = document.getElementById('sComunidad');
-        select.addEventListener('change',
-            function(){
-                var selectedOption = this.options[select.selectedIndex];
-                console.log(selectedOption.value + ': ' + selectedOption.text);
+       /* select.addEventListener('change',
+            function()*/
+
+                //console.log(selectedOption.value + ': ' + selectedOption.text);
 
 
                 //https://www.discoduroderoer.es/como-crear-un-select-html-en-javascript/
                 //Una vez detectado el evento cramos los menus
-                if (selectedOption.value == 11){
+
                     let div1 = document.getElementsByClassName('sunOption')[0];
                     let select2 = document.createElement('select');
                     select2.classList.add('col-75');
@@ -113,7 +123,7 @@ window.onload = iniciar;
                     select2.appendChild(option2)
 
 
-                }
 
-            });
+
+            //});
     }
